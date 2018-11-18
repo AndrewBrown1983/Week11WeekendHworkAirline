@@ -23,4 +23,8 @@ public class Passenger {
     public void setBags(int bags) {
         this.bags = bags;
     }
+
+    public int getIndividualBaggageWeight() {
+        return this.getBags() * 10;
+    }
 }

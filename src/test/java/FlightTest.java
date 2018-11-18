@@ -12,7 +12,7 @@ public class FlightTest {
     Flight flight;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         passenger1 = new Passenger("Dave", 2);
         passenger2 = new Passenger("Andy", 3);
         passenger3 = new Passenger("Bob", 1);
@@ -39,20 +39,27 @@ public class FlightTest {
 
     @Test
     public void canBookPassengerOnFlight() {
-        flight.bookPassenger(passenger1, flight);
+        flight.bookPassenger(passenger1);
         assertEquals(1, flight.getPassengerList());
         assertEquals(true, flight.checkPassengerPresent(passenger1));
     }
 
     @Test
     public void willRejectPassengerIfAtCapacity() {
-        flight.bookPassenger(passenger1, flight);
-        flight.bookPassenger(passenger2, flight);
-        flight.bookPassenger(passenger3, flight);
+        flight.bookPassenger(passenger1);
+        flight.bookPassenger(passenger2);
+        flight.bookPassenger(passenger3);
 
         assertEquals(2, flight.getPassengerList());
         assertEquals(true, flight.checkPassengerPresent(passenger1));
         assertEquals(true, flight.checkPassengerPresent(passenger2));
         assertEquals(false, flight.checkPassengerPresent(passenger3));
     }
+
+//    @Test
+//    public void canGetBaggageWeight() {
+//        flight.bookPassenger(passenger1);
+//        flight.bookPassenger(passenger2);
+//        assertEquals(50, flight.getBaggageWeight());
+//}
 }

@@ -75,10 +75,28 @@ public class Flight {
         return this.passengerList.contains(passenger);
     }
 
-    public void bookPassenger(Passenger passenger, Flight flight) {
-        if (flight.getAvailableSeats() > 0){
-            flight.addPassenger(passenger);
+    public void bookPassenger(Passenger passenger) {
+        if (this.getAvailableSeats() > 0){
+            this.addPassenger(passenger);
         }
+    }
+
+
+    public int getBaggageWeight() {
+        int total = 0;
+        for (Passenger passenger : this.passengerList){
+            total += passenger.getBags();
+        }
+        return total * 10;
+    }
+
+    public int getRemaingWeight() {
+        return (this.plane.getWeight())/2 - getBaggageWeight();
+    }
+
+    public int getAllowedBaggagePerPerson() {
+        int weight = (this.plane.getWeight()/2)/(this.plane.getCapacity());
+        return weight;
     }
 }
 
